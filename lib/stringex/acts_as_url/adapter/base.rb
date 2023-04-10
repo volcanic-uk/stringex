@@ -20,6 +20,7 @@ module Stringex
         def ensure_unique_url!(instance)
           @url_owners = nil
           self.instance = instance
+          return if is_present?(instance.send(settings.url_attribute)) && settings.reserve_user_input
 
           handle_url!
           handle_blacklisted_url!
