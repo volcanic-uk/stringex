@@ -20,7 +20,6 @@ module Stringex
         def ensure_unique_url!(instance)
           @url_owners = nil
           self.instance = instance
-          return if is_present?(instance.send(settings.url_attribute)) && settings.reserve_user_input
 
           handle_url!
           handle_blacklisted_url!
@@ -188,6 +187,15 @@ module Stringex
 
         def modify_base_url
           root = instance.send(settings.attribute_to_urlify).to_s
+
+          suffix = ''
+          suffix_attribute = settings.suffix_attribute
+          if suffix_attribute
+            suffix_attribute = suffix_attribute.call(instance) if suffix_attribute.lambda?
+            suffix = instance.send(suffix_attribute)
+          end
+          root += "-#{suffix}" if suffix.present?
+
           self.base_url = root.to_url(configuration.string_extensions_settings)
         end
 
