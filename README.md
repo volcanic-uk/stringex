@@ -29,6 +29,8 @@ which will populate the `url` attribute on the object with the converted content
 | `:truncate_words` | Used with :limit. If set to false, the url will be truncated to the last whole word before the limit was reached. Default is true. |
 | `:blacklist` | List of urls that should not be allowed. Default is `%w{new}` [which avoids confusion on urls like `/documents/new`]. |
 | `:blacklist_policy` | Proc or lambda defining new naming behavior when blacklisted urls are encountered. Default converts `/documents/new` to `/documents/new-document`. |
+| `:reserve_user_input` | If set, leave the original user input as is without any processing. Default is false. |
+| `:suffix_attribute`| The name of the attribute to use for adding to :url_attribute attribute for the generated url. If set, the url will now be generated from 'url_attribute-suffix_attribute'. This is normally used to make the url more likely to be unique to avoid repeatly querying db and adding duplicate_sequence.<br/> It also accepts a lambda function which return the suffix_attribute name. |
 
 In order to use the generated url attribute, you will probably want to
 override `to_param` like so, in your Model:
