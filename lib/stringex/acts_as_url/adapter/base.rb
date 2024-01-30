@@ -1,4 +1,4 @@
-require 'stringex/acts_as_url/adapter/japanese_transliteration_patch'
+require 'stringex/japanese_transliteration_patch'
 
 module Stringex
   module ActsAsUrl
