@@ -4,6 +4,8 @@ module Stringex
       class Base
         attr_accessor :base_url, :callback_options, :configuration, :instance, :klass, :settings
 
+        include JapaneseTransliterationPatch
+
         def initialize(configuration)
           ensure_loadable
           self.configuration = configuration
