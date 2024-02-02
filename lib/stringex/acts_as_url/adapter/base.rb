@@ -6,7 +6,7 @@ module Stringex
       class Base
         attr_accessor :base_url, :callback_options, :configuration, :instance, :klass, :settings
 
-        include JapaneseTransliterationPatch
+        prepend JapaneseTransliterationPatch
 
         def initialize(configuration)
           ensure_loadable
