@@ -1,8 +1,12 @@
+require 'stringex/japanese_transliteration_patch'
+
 module Stringex
   module ActsAsUrl
     module Adapter
       class Base
         attr_accessor :base_url, :callback_options, :configuration, :instance, :klass, :settings
+
+        prepend JapaneseTransliterationPatch
 
         def initialize(configuration)
           ensure_loadable
