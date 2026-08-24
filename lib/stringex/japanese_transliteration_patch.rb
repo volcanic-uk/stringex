@@ -27,6 +27,5 @@ module Stringex
     def transliterate_kanji?
       instance.respond_to?(:transliterate_kanji?) && instance.transliterate_kanji?
     end
-
   end
 end

@@ -25,7 +25,7 @@ module Stringex
         )
         return string unless transliteration_status.success?
 
-        transliterated = transliterated_output.chomp
+        transliterated = transliterated_output.chomp.delete('^')
         transliterated.empty? ? string : transliterated
       rescue StandardError
         string

@@ -16,7 +16,10 @@ class JapaneseTransliterationTest < Test::Unit::TestCase
     omit_without_kakasi
 
     assert_equal 'saiyou', transliterate('採用', enabled: true)
-    assert_includes transliterate('SAPデータ活用コンサルタント', enabled: true), 'katsuyou'
+    sap_title = transliterate('SAPデータ活用コンサルタント', enabled: true)
+    assert_includes sap_title, 'deta'
+    assert_includes sap_title, 'katsuyou'
+    refute_includes sap_title, '^'
   end
 
   def test_leaves_opted_out_strings_unchanged
