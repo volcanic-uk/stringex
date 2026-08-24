@@ -5,6 +5,7 @@ require 'stringex/configuration'
 require 'stringex/localization'
 require 'stringex/string_extensions'
 require 'stringex/unidecoder'
+require 'stringex/japanese_transliteration'
 require 'stringex/acts_as_url'
 require 'stringex/version'
 
