@@ -29,7 +29,7 @@ module Stringex
 
       safe_string = Shellwords.escape(string)
 
-      cmd = "echo '#{safe_string}'"\
+      cmd = "printf '%s\\n' #{safe_string}"\
         ' | iconv -f utf8 -t eucjp'\
         ' | kakasi -i euc -w | kakasi -i euc -Ha -Ka -Ja -Ea -ka'
 
