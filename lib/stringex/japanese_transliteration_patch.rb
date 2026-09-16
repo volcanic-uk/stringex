@@ -73,12 +73,15 @@ module Stringex
       `echo test | kakasi` == "test\n"
     rescue StandardError
       Rails.logger.error(KAKASI_ERR)
+      false
     end
 
     def iconv_installed?
       `iconv --version`
+      $CHILD_STATUS.success?
     rescue StandardError
       Rails.logger.error(ICONV_ERR)
+      false
     end
   end
 end
